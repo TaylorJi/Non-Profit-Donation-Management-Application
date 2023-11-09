@@ -1,0 +1,11 @@
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/bin/Debug/net7.0/DonationLibrary.deps.json
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/bin/Debug/net7.0/DonationLibrary.dll
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/bin/Debug/net7.0/DonationLibrary.pdb
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/DonationLibrary.GeneratedMSBuildEditorConfig.editorconfig
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/DonationLibrary.AssemblyInfoInputs.cache
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/DonationLibrary.AssemblyInfo.cs
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/DonationLibrary.csproj.CoreCompileInputs.cache
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/DonationLibrary.dll
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/refint/DonationLibrary.dll
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/DonationLibrary.pdb
+/Users/taylorji/Documents/dotnet/assignment2_real_real/DonationLibrary/obj/Debug/net7.0/ref/DonationLibrary.dll

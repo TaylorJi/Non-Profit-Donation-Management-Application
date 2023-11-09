@@ -1,0 +1,59 @@
+﻿@* 
+@page "/donation"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject DonationService donationService
+
+<h1>Donation</h1>
+
+@if (donations == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Street</th>
+            <th>City</th>
+            <th>Postal Code</th>
+            <th>Country</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in donations)
+            {
+                <tr>
+                    <td>@item.AccountNo</td>
+                    <td>@item.FirstName</td>
+                    <td>@item.LastName</td>
+                    <td>@item.Email</td>
+                    <td>@item.Street</td>
+                    <td>@item.City</td>
+                    <td>@item.PostalCode</td>
+                    <td>@item.Country</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    List<Donation>? donations;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        donations = await donationService.GetDonationsAsync();
+    }
+} *@
