@@ -26,7 +26,7 @@ namespace BlazorServer.Data
         return await _context.ContactLists.FindAsync(id) ?? null;
     }
 
-    public async Task<ContactList?> InsertStudentAsync(ContactList contactList)
+    public async Task<ContactList?> InsertContactAsync(ContactList contactList)
     {
         _context.ContactLists.Add(contactList);
         await _context!.SaveChangesAsync();
@@ -35,7 +35,7 @@ namespace BlazorServer.Data
     }
    
 
-    public async Task<ContactList> UpdateStudentAsync(int id, ContactList s)
+    public async Task<ContactList> UpdateContactAsync(int id, ContactList s)
     {
         var contactList = await _context.ContactLists!.FindAsync(id);
 
@@ -56,7 +56,7 @@ namespace BlazorServer.Data
         return contactList!;
     }
 
-    public async Task<ContactList> DeleteStudentAsync(int id)
+    public async Task<ContactList> DeleteContactAsync(int id)
     {
         var contactList = await _context.ContactLists!.FindAsync(id);
 
