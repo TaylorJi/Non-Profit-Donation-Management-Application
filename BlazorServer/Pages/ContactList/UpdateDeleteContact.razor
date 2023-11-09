@@ -1,4 +1,4 @@
-@page "/contactList/updel/{id}/{mode}"
+@page "/getContactList/updel/{id}/{mode}"
 @using BlazorServer.Data
 @using DonationLibrary.Models
 @inject ContactListService contactListService
@@ -47,7 +47,7 @@
         private async Task HandleValidSubmit()
         {
             await contactListService.UpdateContactAsync(contact!.AccountNo, contact);
-            NavManager.NavigateTo("/contactList");
+            NavManager.NavigateTo("/getContactList");
         }
     }
 }
@@ -72,7 +72,7 @@ else if (contact != null && Mode == "del")
         private async Task HandleDeleteContact()
         {
             await contactListService.DeleteContactAsync(contact!.AccountNo);
-            NavManager.NavigateTo("/contactList");
+            NavManager.NavigateTo("/getContactList");
         }
     }
 }

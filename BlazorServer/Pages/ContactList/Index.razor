@@ -1,56 +1,8 @@
-﻿@* @page "/fetchdata"
-@using BlazorServer.Data
-@inject WeatherForecastService ForecastService
-
-<PageTitle>Weather forecast</PageTitle>
-
-<h1>Weather forecast</h1>
-
-<p>This component demonstrates fetching data from a service.</p>
-
-@if (forecasts == null)
-{
-<p><em>Loading...</em></p>
-}
-else
-{
-<table class="table">
-<thead>
-<tr>
-<th>Date</th>
-<th>Temp. (C)</th>
-<th>Temp. (F)</th>
-<th>Summary</th>
-</tr>
-</thead>
-<tbody>
-@foreach (var forecast in forecasts)
-{
-<tr>
-<td>@forecast.Date.ToShortDateString()</td>
-<td>@forecast.TemperatureC</td>
-<td>@forecast.TemperatureF</td>
-<td>@forecast.Summary</td>
-</tr>
-}
-</tbody>
-</table>
-}
-
-@code {
-private WeatherForecast[]? forecasts;
-
-protected override async Task OnInitializedAsync()
-{
-forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTime.Now));
-}
-} *@
-
-
-@page "/contactList"
+﻿@page "/getContactList"
 @using BlazorServer.Data
 @using DonationLibrary.Models
 @inject ContactListService contactService
+@inject NavigationManager NavManager
 
 <h1>Contact List</h1>
 
@@ -60,6 +12,10 @@ forecasts = await ForecastService.GetForecastAsync(DateOnly.FromDateTime(DateTim
 }
 else
 {
+    <p>
+      <button class="btn btn-success" @onclick="CreateNewContact">Create New</button>
+
+    </p>
     <table class='table table-hover'>
     <thead>
         <tr>
@@ -87,8 +43,8 @@ else
                     <td>@item.City</td>
                     <td>@item.PostalCode</td>
                     <td>@item.Country</td>
-                    <td><a class="btn btn-success btn-sm" href="/contactList/updel/@item.AccountNo/edit">edit</a></td>
-                    <td><a class="btn btn-danger btn-sm" href="/contactList/updel/@item.AccountNo/del">del</a></td>
+                    <td><a class="btn btn-success btn-sm" href="/getContactList/updel/@item.AccountNo/edit">edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="/getContactList/updel/@item.AccountNo/del">del</a></td>
                 </tr>
             }
         </tbody>
@@ -98,7 +54,6 @@ else
 
 @code {
     List<ContactList>? contactLists;
-
     protected override async Task OnInitializedAsync()
     {
         await load();
@@ -107,5 +62,9 @@ else
     protected async Task load()
     {
         contactLists = await contactService.GetContactListsAsync();
+    }
+     private void CreateNewContact()
+    {
+        NavManager.NavigateTo("/createContact"); // This should match the @page directive of your create component
     }
 }
