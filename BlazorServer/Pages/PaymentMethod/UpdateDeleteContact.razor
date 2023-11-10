@@ -13,7 +13,7 @@
         <DataAnnotationsValidator />
         <ValidationSummary />
         <div class="form-group">
-            <label for="Name">Name:</label>
+            <label for="Name">Payment name:</label>
             <InputText id="Name" class="form-control" @bind-Value="paymentMethod.Name" />
         </div>
        
@@ -32,14 +32,15 @@ else if (paymentMethod != null && Mode == "del")
 { // Delete
     // display Contact details
     <fieldset>
-        <legend>Contact Information</legend>
-        <p>Name: @Id</p>
+        <legend>Payment Method Information</legend>
+        <p>Id: @Id</p>
+        <p>Name: @paymentMethod.Name</p>
     </fieldset>
-    <p>Delete Contact with ID == @Id</p>
+    <p>Delete Payment method with ID == @Id</p>
     <p>Are you sure?</p>
-    <button type="button" class="btn btn-danger" @onclick="HandleDeleteContact">Delete</button>
+    <button type="button" class="btn btn-danger" @onclick="HandleDeletePayment">Delete</button>
     @code {
-        private async Task HandleDeleteContact()
+        private async Task HandleDeletePayment()
         {
             await paymentMethodService.DeletePaymentMethodAsync(paymentMethod!.PaymentMethodId);
             NavManager.NavigateTo("/getPaymentMethod");

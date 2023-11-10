@@ -23,6 +23,7 @@ builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddScoped<ContactListService>();
 builder.Services.AddScoped<PaymentMethodService>();
+builder.Services.AddScoped<TransactionTypeService>();
 
 var app = builder.Build();
 

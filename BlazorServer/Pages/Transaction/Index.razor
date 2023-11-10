@@ -1,0 +1,60 @@
+﻿@page "/getTransactionType"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject TransactionTypeService transactionTypeService
+@inject NavigationManager NavManager
+
+<h1>Transaction Type</h1>
+
+@if (transactionTypes == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>
+      <button class="btn btn-success" @onclick="createPayment">Create New</button>
+
+    </p>
+    <table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>Tansaction Type Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in transactionTypes)
+            {
+                <tr>
+                    <td>@item.TransactionTypeId</td>
+                    <td>@item.Name</td>
+                    <td>@item.Description</td>
+                    <td><a class="btn btn-success btn-sm" href="/getTransactionType/updel/@item.TransactionTypeId/edit">edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="/getTransactionType/updel/@item.TransactionTypeId/del">del</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    List<TransactionType>? transactionTypes;
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        transactionTypes = await transactionTypeService.GetTransactionAsync();
+    }
+     private void createPayment()
+    {
+        NavManager.NavigateTo("/createTransaction"); // This should match the @page directive of your create component
+    }
+}

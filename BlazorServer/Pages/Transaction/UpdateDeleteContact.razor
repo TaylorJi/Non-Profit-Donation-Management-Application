@@ -1,0 +1,70 @@
+@page "/getTransactionType/updel/{id}/{mode}"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject TransactionTypeService transactionTypeService
+@inject NavigationManager NavManager
+
+<PageTitle>Update/Delete Payment Method</PageTitle>
+
+@if (transactionType != null && Mode == "edit") // Update
+{
+    <p>Update Transaction type with ID == @Id</p>
+    <EditForm Model="@transactionType" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label for="Name">Transaction Name:</label>
+            <InputText id="Name" class="form-control" @bind-Value="transactionType.Name" />
+        </div>
+          <div class="form-group">
+            <label for="Description">Description:</label>
+            <InputText id="Description" class="form-control" @bind-Value="transactionType.Description" />
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Update</button>
+    </EditForm>
+
+    @code {
+        private async Task HandleValidSubmit()
+        {
+            await transactionTypeService.UpdateTransactionAsync(transactionType!.TransactionTypeId, transactionType);
+            NavManager.NavigateTo("/getTransactionType");
+        }
+    }
+}
+else if (transactionType != null && Mode == "del")
+{ // Delete
+    // display Contact details
+    <fieldset>
+        <legend>Transaction Information</legend>
+        <p>Id: @Id</p>
+        <p>Name: @transactionType.Name</p>
+        <p>Description: @transactionType.Description</p>
+    </fieldset>
+    <p>Delete Contact with ID == @Id</p>
+    <p>Are you sure?</p>
+    <button type="button" class="btn btn-danger" @onclick="HandleDeleteTransaction">Delete</button>
+    @code {
+        private async Task HandleDeleteTransaction()
+        {
+            await transactionTypeService.DeleteTransactionAsync(transactionType!.TransactionTypeId);
+            NavManager.NavigateTo("/getTransactionType");
+        }
+    }
+}
+else
+{
+    <p>Contact with ID == @Id not found</p>
+}
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Mode { get; set; }
+    private TransactionType? transactionType = new TransactionType();
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        transactionType = await transactionTypeService.GetTransactionByIdAsync(intId);
+    }
+}
