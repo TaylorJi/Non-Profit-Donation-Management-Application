@@ -1,0 +1,58 @@
+﻿@page "/getPaymentMethod"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject PaymentMethodService paymentMethodService
+@inject NavigationManager NavManager
+
+<h1>Payment Method</h1>
+
+@if (paymentMethods == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>
+      <button class="btn btn-success" @onclick="createPayment">Create New</button>
+
+    </p>
+    <table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>Payment Method Id</th>
+            <th>Name</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in paymentMethods)
+            {
+                <tr>
+                    <td>@item.PaymentMethodId</td>
+                    <td>@item.Name</td>
+                    <td><a class="btn btn-success btn-sm" href="/getPaymentMethod/updel/@item.PaymentMethodId/edit">edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="/getPaymentMethod/updel/@item.PaymentMethodId/del">del</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    List<PaymentMethod>? paymentMethods;
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
+    }
+     private void createPayment()
+    {
+        NavManager.NavigateTo("/createPayment"); // This should match the @page directive of your create component
+    }
+}

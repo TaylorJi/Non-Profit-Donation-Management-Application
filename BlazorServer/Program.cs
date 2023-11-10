@@ -22,6 +22,7 @@ builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuth
 builder.Services.AddSingleton<WeatherForecastService>();
 
 builder.Services.AddScoped<ContactListService>();
+builder.Services.AddScoped<PaymentMethodService>();
 
 var app = builder.Build();
 

@@ -1,0 +1,32 @@
+﻿@page "/createTransaction"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject PaymentMethodService paymentMethodService
+@inject NavigationManager NavigationManager
+
+
+<h1>Create Contact</h1>
+
+<EditForm Model="newPayment" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div class="form-group">
+        <label for="PaymentMethod">Payment Method Name</label>
+        <InputText id="PaymentMethod" class="form-control" @bind-Value="newPayment.Name" />
+    </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
+    
+</EditForm>
+
+@code {
+    private PaymentMethod newPayment = new PaymentMethod();
+
+    private async Task HandleValidSubmit()
+    {
+        await paymentMethodService.InsertPaymentMethodAsync(newPayment);
+        // Navigate to list page or show success message
+            NavigationManager.NavigateTo("/getPaymentMethod");
+    }
+}

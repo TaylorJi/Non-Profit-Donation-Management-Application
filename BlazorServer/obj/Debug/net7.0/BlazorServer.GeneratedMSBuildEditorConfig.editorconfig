@@ -20,6 +20,18 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/TransactionType/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvCFRyYW5zYWN0aW9uVHlwZS9DcmVhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/TransactionType/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvCFRyYW5zYWN0aW9uVHlwZS9JbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/TransactionType/UpdateDeleteContact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvCFRyYW5zYWN0aW9uVHlwZS9VcGRhdGVEZWxldGVDb250YWN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/ContactList/Create.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udGFjdExpc3QvQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
@@ -42,6 +54,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/PaymentMethod/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudE1ldGhvZC9DcmVhdGUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/PaymentMethod/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudE1ldGhvZC9JbmRleC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Pages/PaymentMethod/UpdateDeleteContact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudE1ldGhvZC9VcGRhdGVEZWxldGVDb250YWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/taylorji/Documents/dotnet/assignment2_real_real/BlazorServer/Shared/LoginDisplay.razor]

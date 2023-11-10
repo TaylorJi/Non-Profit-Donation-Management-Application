@@ -1,0 +1,64 @@
+@page "/getPaymentMethod/updel/{id}/{mode}"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject PaymentMethodService paymentMethodService
+@inject NavigationManager NavManager
+
+<PageTitle>Update/Delete Payment Method</PageTitle>
+
+@if (paymentMethod != null && Mode == "edit") // Update
+{
+    <p>Update Contact with ID == @Id</p>
+    <EditForm Model="@paymentMethod" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+        <div class="form-group">
+            <label for="Name">Name:</label>
+            <InputText id="Name" class="form-control" @bind-Value="paymentMethod.Name" />
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Update</button>
+    </EditForm>
+
+    @code {
+        private async Task HandleValidSubmit()
+        {
+            await paymentMethodService.UpdatePaymentMethodAsync(paymentMethod!.PaymentMethodId, paymentMethod);
+            NavManager.NavigateTo("/getPaymentMethod");
+        }
+    }
+}
+else if (paymentMethod != null && Mode == "del")
+{ // Delete
+    // display Contact details
+    <fieldset>
+        <legend>Contact Information</legend>
+        <p>Name: @Id</p>
+    </fieldset>
+    <p>Delete Contact with ID == @Id</p>
+    <p>Are you sure?</p>
+    <button type="button" class="btn btn-danger" @onclick="HandleDeleteContact">Delete</button>
+    @code {
+        private async Task HandleDeleteContact()
+        {
+            await paymentMethodService.DeletePaymentMethodAsync(paymentMethod!.PaymentMethodId);
+            NavManager.NavigateTo("/getPaymentMethod");
+        }
+    }
+}
+else
+{
+    <p>Contact with ID == @Id not found</p>
+}
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Mode { get; set; }
+    private PaymentMethod? paymentMethod = new PaymentMethod();
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(intId);
+    }
+}
