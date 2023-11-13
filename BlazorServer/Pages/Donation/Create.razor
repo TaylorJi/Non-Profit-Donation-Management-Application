@@ -1,0 +1,95 @@
+@page "/createDonation"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject DonationService donationService
+@inject NavigationManager NavigationManager
+@inject ContactListService contactListService
+@inject PaymentMethodService paymentMethodService
+@inject TransactionTypeService transactionTypeService
+
+
+<h1>Create Contact</h1>
+
+@if (!string.IsNullOrEmpty(errorMessage))
+{
+    <div style="color: red;">@errorMessage</div>
+}
+
+<EditForm Model="newDonation" OnValidSubmit="HandleValidSubmit">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="Date">Date:</label>
+        <InputDate class="form-control" id="Date" @bind-Value="newDonation.Date" />
+    </div>
+    <div class="form-group">
+        <label for="Contact">Contact:</label>
+        <InputSelect class="form-control" id="Contact" @bind-Value="newDonation.AccountNo">
+            @foreach (var contact in contacts)
+            {
+                <option value="@contact.AccountNo">@contact.FirstName @contact.LastName</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="form-group">
+        <label for="Method">Payment Methods:</label>
+        <InputSelect class="form-control" id="method" @bind-Value="newDonation.PaymentMethodId">
+            @foreach (var method in paymentMethods)
+            {
+                <option value="@method.PaymentMethodId">@method.Name</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="form-group">
+        <label for="Type">Transaction Type:</label>
+        <InputSelect class="form-control" id="type" @bind-Value="newDonation.TransactionTypeId">
+            @foreach (var type in transactionTypes)
+            {
+                <option value="@type.TransactionTypeId">@type.Name</option>
+            }
+        </InputSelect>
+    </div>
+    <div class="form-group">
+        <label for="Amount">Amount: </label>
+        <InputNumber class="form-control" id="Amount" @bind-Value="newDonation.Amount" />
+    </div>
+        <div class="form-group">
+        <label for="Notes">Notes:</label>
+        <InputTextArea class="form-control" id="Notes" @bind-Value="newDonation.Notes" />
+    </div>
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
+</EditForm>
+
+@code {
+    private Donation newDonation = new Donation();
+    List<ContactList>? contacts;
+    List<PaymentMethod>? paymentMethods;
+    List<TransactionType>? transactionTypes;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync() {
+        contacts = await contactListService.GetContactListsAsync();
+        paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
+        transactionTypes = await transactionTypeService.GetTransactionAsync();
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if (newDonation.PaymentMethodId == 0 || newDonation.TransactionTypeId == 0 || newDonation.AccountNo == 0)
+        {
+            // Display error message
+            errorMessage = "Please select valid values for Payment Method, Transaction Type, and Contact.";
+            return;
+        }
+
+        // Clear any previous error messages
+        errorMessage = "";
+
+        await donationService.InsertDonationAsync(newDonation);
+        // Navigate to list page or show success message
+            NavigationManager.NavigateTo("/donation");
+    }
+}

@@ -1,0 +1,93 @@
+﻿
+@page "/donation"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject DonationService donationService
+@inject ContactListService contactService
+@inject TransactionTypeService transactionTypeService
+@inject PaymentMethodService paymentMethodService
+@inject NavigationManager navigationManager
+
+<h1>Donation</h1>
+
+@if (donations == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <p>
+      <button class="btn btn-success" @onclick="createDonation">Create New</button>
+
+    </p>
+    <table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Contact</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+            <th>Payment Method</th>
+            <th>Notes</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in donations)
+            {
+                getContact(item.AccountNo);
+                getType(item.TransactionTypeId);
+                getMethod(item.PaymentMethodId);
+                <tr>
+                    <td>@item.TransId</td>
+                    <td>@item.Date</td>
+                    <td>@contact.FirstName @contact.LastName</td>
+                    <td>@transactionType.Name</td>
+                    <td>@item.Amount</td>
+                    <td>@paymentMethod.Name</td>
+                    <td>@item.Notes</td>
+                    <td><a class="btn btn-success btn-sm" href="/donation/updel/@item.TransId/edit">edit</a></td>
+                    <td><a class="btn btn-danger btn-sm" href="/donation/updel/@item.TransId/del">del</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+
+@code {
+    List<Donation>? donations;
+    ContactList? contact;
+    TransactionType? transactionType;
+    PaymentMethod? paymentMethod;
+
+    protected async Task getContact(int id)
+    {
+        contact = await contactService.GetContactListByIdAsync(id);
+    }
+
+    protected async Task getType(int id) {
+        transactionType = await transactionTypeService.GetTransactionByIdAsync(id);
+    }
+
+    protected async Task getMethod(int id) {
+        paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(id);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        donations = await donationService.GetDonationsAsync();
+    }
+    
+    private void createDonation()
+    {
+        navigationManager.NavigateTo("/createDonation"); // This should match the @page directive of your create component
+    }
+}

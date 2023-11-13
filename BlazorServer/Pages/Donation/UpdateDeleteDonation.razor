@@ -1,0 +1,138 @@
+@page "/donation/updel/{id}/{mode}"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject ContactListService contactListService
+@inject DonationService donationService
+@inject PaymentMethodService paymentMethodService
+@inject TransactionTypeService transactionTypeService
+@inject NavigationManager NavManager
+
+<PageTitle>Update/Delete Donation</PageTitle>
+
+@if (donation != null && Mode == "edit") // Update
+{
+    <p>Update Donation with ID == @Id</p>
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div style="color: red;">@errorMessage</div>
+    }
+
+    <EditForm Model="@donation" OnValidSubmit="HandleValidSubmit">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <div class="form-group">
+            <label for="Date">Date:</label>
+            <InputDate class="form-control" id="Date" @bind-Value="@donation.Date" />
+        </div>
+        <div class="form-group">
+            <label for="Contact">Contact:</label>
+            <InputSelect class="form-control" id="Contact" @bind-Value="@donation.AccountNo">
+                @foreach (var contact in contacts)
+                {
+                    <option value="@contact.AccountNo">@contact.FirstName @contact.LastName</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="Method">Payment Methods:</label>
+            <InputSelect class="form-control" id="method" @bind-Value="@donation.PaymentMethodId">
+                @foreach (var method in paymentMethods)
+                {
+                    <option value="@method.PaymentMethodId">@method.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="Type">Transaction Type:</label>
+            <InputSelect class="form-control" id="type" @bind-Value="@donation.TransactionTypeId">
+                @foreach (var type in transactionTypes)
+                {
+                    <option value="@type.TransactionTypeId">@type.Name</option>
+                }
+            </InputSelect>
+        </div>
+        <div class="form-group">
+            <label for="Amount">Amount: </label>
+            <InputNumber class="form-control" id="Amount" @bind-Value="@donation.Amount" />
+        </div>
+        <div class="form-group">
+            <label for="Notes">Notes:</label>
+            <InputTextArea class="form-control" id="Notes" @bind-Value="@donation.Notes" />
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-success">Update</button>
+        </div>
+    </EditForm>
+
+    @code {
+    private async Task HandleValidSubmit()
+    {
+        if (donation.PaymentMethodId == 0 || donation.TransactionTypeId == 0 || donation.AccountNo == 0)
+        {
+            // Display error message
+            errorMessage = "Please select valid values for Payment Method, Transaction Type, and Contact.";
+            return;
+        }
+
+        // Clear any previous error messages
+        errorMessage = "";
+        await donationService.UpdateDonationAsync(donation!.TransId, donation);
+        NavManager.NavigateTo("/donation");
+    }
+}
+}
+else if (donation != null && Mode == "del")
+{ // Delete
+    // display Contact details
+    <fieldset>
+        <legend>Donation Information</legend>
+        <p>Donation Id: @Id</p>
+        <p>Date: @donation.Date</p>
+        <p>Amount: @donation.Amount</p>
+        <p>Notes: @donation.Notes</p>
+        <p>Payment Method: @paymentMethod.Name</p>
+        <p>Transaction Type: @transactionType.Name</p>
+        <p>Contact: @contact.FirstName @contact.LastName</p>
+    </fieldset>
+    <p>Delete Contact with ID == @Id</p>
+    <p>Are you sure?</p>
+    <button type="button" class="btn btn-danger" @onclick="HandleDeleteContact">Delete</button>
+    @code {
+    private async Task HandleDeleteContact()
+    {
+        await donationService.DeleteDonationAsync(donation!.TransId);
+        NavManager.NavigateTo("/donation");
+    }
+}
+}
+else
+{
+    <p>Contact with ID == @Id not found</p>
+}
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    [Parameter]
+    public string? Mode { get; set; }
+    private Donation? donation = new Donation();
+    List<ContactList>? contacts;
+    List<PaymentMethod>? paymentMethods;
+    List<TransactionType>? transactionTypes;
+    ContactList? contact;
+    TransactionType? transactionType;
+    PaymentMethod? paymentMethod;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        contacts = await contactListService.GetContactListsAsync();
+        paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
+        transactionTypes = await transactionTypeService.GetTransactionAsync();
+        int intId = Convert.ToInt32(Id);
+        donation = await donationService.GetDonationByIdAsync(intId);
+        transactionType = await transactionTypeService.GetTransactionByIdAsync(donation.TransactionTypeId);
+        paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(donation.PaymentMethodId);
+        contact = await contactListService.GetContactListByIdAsync(donation.AccountNo);
+    }
+}
