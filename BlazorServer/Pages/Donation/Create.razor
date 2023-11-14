@@ -34,7 +34,7 @@
     </div>
     <div class="form-group">
         <label for="Method">Payment Methods:</label>
-        <InputSelect class="form-control" id="method" @bind-Value="newDonation.PaymentMethodId">
+        <InputSelect class="form-control" id="Method" @bind-Value="newDonation.PaymentMethodId">
             @foreach (var method in paymentMethods)
             {
                 <option value="@method.PaymentMethodId">@method.Name</option>
@@ -43,7 +43,7 @@
     </div>
     <div class="form-group">
         <label for="Type">Transaction Type:</label>
-        <InputSelect class="form-control" id="type" @bind-Value="newDonation.TransactionTypeId">
+        <InputSelect class="form-control" id="Type" @bind-Value="newDonation.TransactionTypeId">
             @foreach (var type in transactionTypes)
             {
                 <option value="@type.TransactionTypeId">@type.Name</option>

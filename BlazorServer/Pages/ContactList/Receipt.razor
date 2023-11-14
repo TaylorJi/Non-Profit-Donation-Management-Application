@@ -1,0 +1,81 @@
+@page "/getContactList/receipt/{id}"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject ContactListService contactListService
+@inject DonationService donationService
+@inject NavigationManager NavManager
+
+<PageTitle>Receipt for @contact.FirstName @contact.LastName</PageTitle>
+
+<h3>Receipt for @contact.FirstName @contact.LastName for @date.Year</h3>
+
+<table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>Created</th>
+            <th>Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in donations)
+            {
+                <tr>
+                    <td>@item.Date</td>
+                    <td>$@item.Amount</td>
+                </tr>
+                addTotal(item);
+            }
+            <tr>
+                <td>
+                    <strong>Total</strong>
+                </td>
+                <td>
+                    <strong>$@total</strong>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group">
+        <button class="btn btn-primary" @onclick="BackToContactList">Back to Contact List</button>
+    </div>
+
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    public DateTime date = DateTime.Now;
+    public float? total = 0;
+
+    private ContactList? contact = new ContactList();
+    private List<Donation>? donationsUnfiltered;
+    private List<Donation>? donations = new List<Donation>();
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        contact = await contactListService.GetContactListByIdAsync(intId);
+        donationsUnfiltered = await donationService.GetDonationsByContactListIdAsync(intId);
+        foreach (var item in donationsUnfiltered)
+        {
+            if(item.Date.Year == date.Year)
+            {
+                donations.Add(item);
+            }
+        }
+    }
+
+    public void addTotal(Donation donation)
+    {
+        total += donation.Amount;
+    }
+
+    public void BackToContactList()
+    {
+        NavManager.NavigateTo("/getContactList");
+    }
+
+    public DateTime CleanDate(DateTime date)
+    {
+        return DateTime.Parse(date.ToString("MM/dd/yyyy"));
+    }
+}

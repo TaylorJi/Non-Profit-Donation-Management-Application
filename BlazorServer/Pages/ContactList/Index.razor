@@ -29,6 +29,7 @@ else
             <th>Country</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -45,6 +46,7 @@ else
                     <td>@item.Country</td>
                     <td><a class="btn btn-success btn-sm" href="/getContactList/updel/@item.AccountNo/edit">edit</a></td>
                     <td><a class="btn btn-danger btn-sm" href="/getContactList/updel/@item.AccountNo/del">del</a></td>
+                    <td><a class="btn btn-warning btn-sm" href="/getContactList/receipt/@item.AccountNo">Receipt</a></td>
                 </tr>
             }
         </tbody>

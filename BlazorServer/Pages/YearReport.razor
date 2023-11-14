@@ -1,0 +1,104 @@
+
+@page "/reportPage"
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject DonationService donationService
+@inject ContactListService contactService
+@inject TransactionTypeService transactionTypeService
+@inject PaymentMethodService paymentMethodService
+@inject NavigationManager navigationManager
+
+<h1>Report</h1>
+
+@if (donations == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <label for="year">Year: </label>
+    <InputNumber class="form-control" id="year" @bind-Value="year" />
+    <button class="btn btn-primary" @onclick="load">Load</button>
+    <br />
+    <table class='table table-hover'>
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Contact</th>
+            <th>Transaction Type</th>
+            <th>Amount</th>
+            <th>Payment Method</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in donations)
+            {
+                getContact(item.AccountNo);
+                getType(item.TransactionTypeId);
+                getMethod(item.PaymentMethodId);
+                <tr>
+                    <td>@item.Date</td>
+                    <td>@contact.FirstName @contact.LastName</td>
+                    <td>@transactionType.Name</td>
+                    <td>$@item.Amount</td>
+                    <td>@paymentMethod.Name</td>
+                </tr>
+                addTotal(item.Amount);
+            }
+            <tr>
+                <td><strong>Total</strong></td>
+                <td></td>
+                <td></td>
+                <td><strong>$@totalDonations</strong></td>
+            </tr>
+        </tbody>
+    </table>
+}
+
+
+@code {
+    public List<DonationLibrary.Models.Donation>? donationsUnfiltered;
+    public List<DonationLibrary.Models.Donation>? donations = new List<DonationLibrary.Models.Donation>();
+    public DonationLibrary.Models.ContactList? contact;
+    public TransactionType? transactionType;
+    public DonationLibrary.Models.PaymentMethod? paymentMethod;
+    public float totalDonations = 0;
+    public int year = 0;
+
+    protected async Task getContact(int id)
+    {
+        contact = await contactService.GetContactListByIdAsync(id);
+    }
+
+    protected async Task getType(int id) {
+        transactionType = await transactionTypeService.GetTransactionByIdAsync(id);
+    }
+
+    protected async Task getMethod(int id) {
+        paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(id);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await load();
+    }
+
+    protected async Task load()
+    {
+        donationsUnfiltered = await donationService.GetDonationsAsync();
+        donations.Clear();
+        totalDonations = 0;
+        foreach (var item in donationsUnfiltered)
+        {
+            if (item.Date.Year == year)
+            {
+                donations.Add(item);
+            }
+        }
+    }
+
+    private void addTotal(float? amount)
+    {
+        totalDonations += amount ?? 0;
+    }
+}

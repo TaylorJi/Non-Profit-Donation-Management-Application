@@ -33,6 +33,10 @@ namespace BlazorServer.Data
         return donation;
     }
    
+    public async Task<List<Donation>> GetDonationsByContactListIdAsync(int id)
+    {
+        return await _context.Donations.Where(d => d.AccountNo! == id).ToListAsync();
+    }
 
     public async Task<Donation> UpdateDonationAsync(int id, Donation d)
     {
