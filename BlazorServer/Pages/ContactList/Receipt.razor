@@ -1,4 +1,5 @@
 @page "/getContactList/receipt/{id}"
+@attribute [Authorize(Roles = "Admin")]
 @using BlazorServer.Data
 @using DonationLibrary.Models
 @inject ContactListService contactListService

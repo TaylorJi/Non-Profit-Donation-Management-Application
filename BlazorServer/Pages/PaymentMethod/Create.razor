@@ -1,4 +1,5 @@
 ﻿@page "/createPayment"
+@attribute [Authorize(Roles = "Admin")]
 @using BlazorServer.Data
 @using DonationLibrary.Models
 @inject PaymentMethodService paymentMethodService

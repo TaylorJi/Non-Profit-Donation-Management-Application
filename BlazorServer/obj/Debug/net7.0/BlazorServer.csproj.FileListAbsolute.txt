@@ -322,3 +322,4 @@ C:/COMP4976/Assignments/real_Assignment2/Comp4976_Tay_Isa/BlazorServer/obj/Debug
 /Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/obj/Debug/net7.0/BlazorServer.csproj.CopyComplete
 /Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/obj/Debug/net7.0/BlazorServer.genruntimeconfig.cache
 /Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/obj/Debug/net7.0/ref/BlazorServer.dll
+/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/obj/Debug/net7.0/BlazorServer.sourcelink.json

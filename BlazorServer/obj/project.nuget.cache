@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "wUjyKVpDHfiS8UDTmzVqrdbVD8e0y5o3Ns2wbaofJvV1pNIYiptzHw/xljg/cnJmbyjWYlsFWjKx7Gow1zaRaA==",
+  "dgSpecHash": "zAyRG0zgF+M8ZCKlw8w2PjxQOCfpG5Hab18BIfHGfQsSh0HC2W3zx44xeNLFl1g9X0o8rt+9z3VPjwNEANQpOg==",
   "success": true,
   "projectFilePath": "/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/BlazorServer.csproj",
   "expectedPackageFiles": [
@@ -41,7 +41,10 @@
     "/Users/taylorji/.nuget/packages/system.codedom/4.4.0/system.codedom.4.4.0.nupkg.sha512",
     "/Users/taylorji/.nuget/packages/system.memory/4.5.3/system.memory.4.5.3.nupkg.sha512",
     "/Users/taylorji/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
-    "/Users/taylorji/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512"
+    "/Users/taylorji/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
+    "/Users/taylorji/.nuget/packages/microsoft.netcore.app.ref/7.0.14/microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/taylorji/.nuget/packages/microsoft.aspnetcore.app.ref/7.0.14/microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512",
+    "/Users/taylorji/.nuget/packages/microsoft.netcore.app.host.osx-arm64/7.0.14/microsoft.netcore.app.host.osx-arm64.7.0.14.nupkg.sha512"
   ],
   "logs": []
 }
