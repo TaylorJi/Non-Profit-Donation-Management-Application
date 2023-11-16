@@ -8,4 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = DonationLibrary
-build_property.ProjectDir = C:\COMP4976\Assignments\Comp4976_Tay_Isa\DonationLibrary\
+build_property.ProjectDir = C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 

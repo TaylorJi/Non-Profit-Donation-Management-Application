@@ -9,115 +9,123 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BlazorServer
 build_property.RootNamespace = BlazorServer
-build_property.ProjectDir = /Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/
+build_property.ProjectDir = C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\BlazorServer\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer
+build_property.MSBuildProjectDirectory = C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\BlazorServer
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/App.razor]
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Create.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udGFjdExpc3QvQ3JlYXRlLnJhem9y
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdExpc3RcQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udGFjdExpc3QvSW5kZXgucmF6b3I=
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Details.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdExpc3RcRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Receipt.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udGFjdExpc3QvUmVjZWlwdC5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdExpc3RcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/UpdateDeleteContact.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ29udGFjdExpc3QvVXBkYXRlRGVsZXRlQ29udGFjdC5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/Receipt.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdExpc3RcUmVjZWlwdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ291bnRlci5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/ContactList/UpdateDeleteContact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29udGFjdExpc3RcVXBkYXRlRGVsZXRlQ29udGFjdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/Create.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9uYXRpb24vQ3JlYXRlLnJhem9y
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Counter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9uYXRpb24vSW5kZXgucmF6b3I=
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9uYXRpb25cQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/UpdateDeleteDonation.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRG9uYXRpb24vVXBkYXRlRGVsZXRlRG9uYXRpb24ucmF6b3I=
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/Details.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9uYXRpb25cRGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXgucmF6b3I=
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9uYXRpb25cSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/PaymentMethod/Create.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudE1ldGhvZC9DcmVhdGUucmF6b3I=
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Donation/UpdateDeleteDonation.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRG9uYXRpb25cVXBkYXRlRGVsZXRlRG9uYXRpb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/PaymentMethod/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudE1ldGhvZC9JbmRleC5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/PaymentMethod/UpdateDeleteContact.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudE1ldGhvZC9VcGRhdGVEZWxldGVDb250YWN0LnJhem9y
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/PaymentMethod/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudE1ldGhvZFxDcmVhdGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Transaction/Create.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVHJhbnNhY3Rpb24vQ3JlYXRlLnJhem9y
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/PaymentMethod/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudE1ldGhvZFxJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Transaction/Index.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVHJhbnNhY3Rpb24vSW5kZXgucmF6b3I=
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/PaymentMethod/UpdateDeleteContact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGF5bWVudE1ldGhvZFxVcGRhdGVEZWxldGVDb250YWN0LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Transaction/UpdateDeleteContact.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVHJhbnNhY3Rpb24vVXBkYXRlRGVsZXRlQ29udGFjdC5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Transaction/Create.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cQ3JlYXRlLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/YearReport.razor]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvWWVhclJlcG9ydC5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Transaction/Index.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Shared/LoginDisplay.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL0xvZ2luRGlzcGxheS5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Transaction/UpdateDeleteContact.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVHJhbnNhY3Rpb25cVXBkYXRlRGVsZXRlQ29udGFjdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Shared/SurveyPrompt.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL1N1cnZleVByb21wdC5yYXpvcg==
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/YearReport.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcWWVhclJlcG9ydC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/_Imports.razor]
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Shared/LoginDisplay.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXExvZ2luRGlzcGxheS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Shared/SurveyPrompt.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Shared/MainLayout.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL01haW5MYXlvdXQucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-s5uh5d1cba
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Shared/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-mxoy4q7bj7
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Shared/NavMenu.razor]
-build_metadata.AdditionalFiles.TargetPath = U2hhcmVkL05hdk1lbnUucmF6b3I=
-build_metadata.AdditionalFiles.CssScope = b-dctiheqh1z
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Shared/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = b-9s0xq2xzhp
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Areas/Identity/Pages/Account/LogOut.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvQWNjb3VudC9Mb2dPdXQuY3NodG1s
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Areas/Identity/Pages/Account/LogOut.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dPdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = QXJlYXMvSWRlbnRpdHkvUGFnZXMvU2hhcmVkL19Mb2dpblBhcnRpYWwuY3NodG1s
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Areas/Identity/Pages/Shared/_LoginPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXJyb3IuY3NodG1s
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/taylorji/Documents/dotnet/assignment2_pull/Comp4976_Tay_Isa/BlazorServer/Pages/_Host.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0hvc3QuY3NodG1s
+[C:/COMP4976/Assignments/finalAssignment2/Comp4976_Tay_Isa/BlazorServer/Pages/_Host.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX0hvc3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

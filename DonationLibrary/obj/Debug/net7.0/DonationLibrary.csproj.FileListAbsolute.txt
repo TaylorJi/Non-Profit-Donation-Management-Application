@@ -20,3 +20,15 @@ C:\COMP4976\Assignments\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\Donati
 C:\COMP4976\Assignments\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\refint\DonationLibrary.dll
 C:\COMP4976\Assignments\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.pdb
 C:\COMP4976\Assignments\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\ref\DonationLibrary.dll
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\bin\Debug\net7.0\DonationLibrary.deps.json
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\bin\Debug\net7.0\DonationLibrary.dll
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\bin\Debug\net7.0\DonationLibrary.pdb
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.AssemblyInfoInputs.cache
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.AssemblyInfo.cs
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.csproj.CoreCompileInputs.cache
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.sourcelink.json
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.dll
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\refint\DonationLibrary.dll
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\DonationLibrary.pdb
+C:\COMP4976\Assignments\finalAssignment2\Comp4976_Tay_Isa\DonationLibrary\obj\Debug\net7.0\ref\DonationLibrary.dll

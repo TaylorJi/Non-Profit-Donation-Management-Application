@@ -1,0 +1,43 @@
+@page "/getContactList/details/{id}"
+@attribute [Authorize(Roles = "Admin")]
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject ContactListService contactListService
+@inject NavigationManager NavManager
+
+<PageTitle>Details of Contact</PageTitle>
+
+<fieldset>
+    <legend>Contact Information</legend>
+    <p>Contact ID: @Id</p>
+    <p>First Name: @contact.FirstName</p>
+    <p>Last Name: @contact.LastName</p>
+    <p>Email: @contact.Email</p>
+    <p>Street: @contact.Street</p>
+    <p>City: @contact.City</p>
+    <p>Postal Code: @contact.PostalCode</p>
+    <p>Country: @contact.Country</p>
+    <p>Created: @contact.Created</p>
+    <p>Modified: @contact.Modified</p>
+    <p>Created By: @contact.CreatedBy</p>
+    <p>Modified By: @contact.ModifiedBy</p>
+</fieldset>
+<div class="form-group">
+    <button class="btn btn-primary" @onclick="BackToContactList">Back to Contact List</button>
+</div>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    private ContactList? contact = new ContactList();
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        contact = await contactListService.GetContactListByIdAsync(intId);
+    }
+
+    private void BackToContactList()
+    {
+        NavManager.NavigateTo("/getContactList");
+    }
+}

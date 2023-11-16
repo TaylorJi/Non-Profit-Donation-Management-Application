@@ -1,0 +1,87 @@
+@page "/donation/details/{id}"
+@attribute [Authorize(Roles = "Admin")]
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject ContactListService contactListService
+@inject DonationService donationService
+@inject PaymentMethodService paymentMethodService
+@inject TransactionTypeService transactionTypeService
+@inject NavigationManager NavManager
+
+<PageTitle>Details of Contact</PageTitle>
+
+<fieldset>
+    <legend>Donation Information</legend>
+    <p>Donation Id: @Id</p>
+    <p>Date: @donation.Date</p>
+    <p>Amount: @donation.Amount</p>
+    <p>Notes: @donation.Notes</p>
+    <p>Payment Method: @paymentMethod.Name</p>
+    <p>Transaction Type: @transactionType.Name</p>
+    <p>Contact: @contact.FirstName @contact.LastName</p>
+    <p>Created: @donation.Created</p>
+    <p>Modified: @donation.Modified</p>
+    <p>Created By: @donation.CreatedBy</p>
+    <p>Modified By: @donation.ModifiedBy</p>
+</fieldset>
+<div class="form-group">
+    <button class="btn btn-primary" @onclick="BackToDonationList">Back to Donation List</button>
+</div>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    private Donation? donation = new Donation();
+    List<ContactList>? contacts;
+    List<PaymentMethod>? paymentMethods;
+    List<TransactionType>? transactionTypes;
+    ContactList? contact;
+    TransactionType? transactionType;
+    PaymentMethod? paymentMethod;
+    private string? errorMessage;
+
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        donation = await donationService.GetDonationByIdAsync(intId);
+
+        if (donation != null)
+        {
+            if (donation.TransactionTypeId.HasValue)
+            {
+                transactionType = await transactionTypeService.GetTransactionByIdAsync(donation.TransactionTypeId.Value);
+            }
+            else
+            {
+                // Handle the case where TransactionTypeId is null
+            }
+
+            if (donation.PaymentMethodId.HasValue)
+            {
+                paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(donation.PaymentMethodId.Value);
+            }
+            else
+            {
+                // Handle the case where PaymentMethodId is null
+            }
+
+            if (donation.AccountNo.HasValue)
+            {
+                contact = await contactListService.GetContactListByIdAsync(donation.AccountNo.Value);
+            }
+            else
+            {
+                // Handle the case where AccountNo is null
+            }
+        }
+
+        contacts = await contactListService.GetContactListsAsync();
+        paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
+        transactionTypes = await transactionTypeService.GetTransactionAsync();
+    }
+
+    private void BackToDonationList()
+    {
+        NavManager.NavigateTo("/donation");
+    }
+}

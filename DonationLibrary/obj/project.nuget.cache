@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "8L67BnS2Li7X1+lVWWWqgjh3JE/3Ntg1BRMe5hTkV+RkjlX3oVMJ7Pk9BR03EpatTrOvJQsUMy10yBvtO18rKg==",
+  "dgSpecHash": "VLBFFV4Le6GmDaDubYCH2/6fGeEATFs0J+DoyVTCLHfG3BGWGwWFbzgVSSfUJZu2EbqegMrfA7gZmiNEWXJcoA==",
   "success": true,
-  "projectFilePath": "C:\\COMP4976\\Assignments\\Comp4976_Tay_Isa\\DonationLibrary\\DonationLibrary.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\COMP4976\\Assignments\\finalAssignment2\\Comp4976_Tay_Isa\\DonationLibrary\\DonationLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\isaac\\.nuget\\packages\\microsoft.netcore.app.ref\\7.0.14\\microsoft.netcore.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\isaac\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\7.0.14\\microsoft.windowsdesktop.app.ref.7.0.14.nupkg.sha512",
+    "C:\\Users\\isaac\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\7.0.14\\microsoft.aspnetcore.app.ref.7.0.14.nupkg.sha512"
+  ],
   "logs": []
 }
