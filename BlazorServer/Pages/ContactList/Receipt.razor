@@ -50,7 +50,7 @@
     private ContactList? contact = new ContactList();
     private List<Donation>? donationsUnfiltered;
     private List<Donation>? donations = new List<Donation>();
-    protected override async Task OnInitializedAsync()
+    @* protected override async Task OnInitializedAsync()
     {
         int intId = Convert.ToInt32(Id);
         contact = await contactListService.GetContactListByIdAsync(intId);
@@ -62,7 +62,23 @@
                 donations.Add(item);
             }
         }
+    } *@
+
+    protected override async Task OnInitializedAsync()
+{
+    int intId = Convert.ToInt32(Id);
+    contact = await contactListService.GetContactListByIdAsync(intId);
+    donationsUnfiltered = await donationService.GetDonationsByContactListIdAsync(intId);
+    donations.Clear();
+
+    foreach (var item in donationsUnfiltered)
+    {
+        if (item.Date.HasValue && item.Date.Value.Year == date.Year)
+        {
+            donations.Add(item);
+        }
     }
+}
 
     public void addTotal(Donation donation)
     {

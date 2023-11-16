@@ -17,9 +17,12 @@
         <div style="color: red;">@errorMessage</div>
     }
 
+
     <EditForm Model="@donation" OnValidSubmit="HandleValidSubmit">
         <DataAnnotationsValidator />
         <ValidationSummary />
+
+
 
         <div class="form-group">
             <label for="Date">Date:</label>
@@ -84,17 +87,17 @@
 }
 else if (donation != null && Mode == "del")
 { // Delete
-    // display Contact details
+  // display Contact details
     <fieldset>
-        <legend>Donation Information</legend>
-        <p>Donation Id: @Id</p>
-        <p>Date: @donation.Date</p>
-        <p>Amount: @donation.Amount</p>
-        <p>Notes: @donation.Notes</p>
-        <p>Payment Method: @paymentMethod.Name</p>
-        <p>Transaction Type: @transactionType.Name</p>
-        <p>Contact: @contact.FirstName @contact.LastName</p>
-    </fieldset>
+    <legend>Donation Information</legend>
+    <p>Donation Id: @Id</p>
+    <p>Date: @donation.Date</p>
+    <p>Amount: @donation.Amount</p>
+    <p>Notes: @donation.Notes</p>
+    <p>Payment Method: @paymentMethod.Name</p>
+    <p>Transaction Type: @transactionType.Name</p>
+    <p>Contact: @contact.FirstName @contact.LastName</p>
+</fieldset>
     <p>Delete Contact with ID == @Id</p>
     <p>Are you sure?</p>
     <button type="button" class="btn btn-danger" @onclick="HandleDeleteContact">Delete</button>
@@ -124,9 +127,27 @@ else
     PaymentMethod? paymentMethod;
     private string? errorMessage;
 
-    protected override async Task OnInitializedAsync()
+    @* protected override async Task OnInitializedAsync()
     {
-        contacts = await contactListService.GetContactListsAsync();
+@* 
+        if (donation.TransactionTypeId.HasValue)
+        {
+            transactionTypes = await transactionTypeService.GetTransactionAsync();
+        }
+
+        if (donation.PaymentMethodId.HasValue)
+        {
+            paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
+        }
+
+        if (donation.AccountNo.HasValue)
+        {
+            contacts = await contactListService.GetContactListsAsync();
+        } *@
+
+
+
+        @* contacts = await contactListService.GetContactListsAsync();
         paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
         transactionTypes = await transactionTypeService.GetTransactionAsync();
         int intId = Convert.ToInt32(Id);
@@ -134,5 +155,45 @@ else
         transactionType = await transactionTypeService.GetTransactionByIdAsync(donation.TransactionTypeId);
         paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(donation.PaymentMethodId);
         contact = await contactListService.GetContactListByIdAsync(donation.AccountNo);
+    } *@
+    protected override async Task OnInitializedAsync()
+{
+    int intId = Convert.ToInt32(Id);
+    donation = await donationService.GetDonationByIdAsync(intId);
+
+    if (donation != null)
+    {
+        if (donation.TransactionTypeId.HasValue)
+        {
+            transactionType = await transactionTypeService.GetTransactionByIdAsync(donation.TransactionTypeId.Value);
+        }
+        else
+        {
+            // Handle the case where TransactionTypeId is null
+        }
+
+        if (donation.PaymentMethodId.HasValue)
+        {
+            paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(donation.PaymentMethodId.Value);
+        }
+        else
+        {
+            // Handle the case where PaymentMethodId is null
+        }
+
+        if (donation.AccountNo.HasValue)
+        {
+            contact = await contactListService.GetContactListByIdAsync(donation.AccountNo.Value);
+        }
+        else
+        {
+            // Handle the case where AccountNo is null
+        }
     }
+
+    contacts = await contactListService.GetContactListsAsync();
+    paymentMethods = await paymentMethodService.GetPaymentMethodAsync();
+    transactionTypes = await transactionTypeService.GetTransactionAsync();
+}
+
 }

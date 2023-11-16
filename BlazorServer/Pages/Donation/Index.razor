@@ -1,5 +1,5 @@
-﻿
-@page "/donation"
+﻿@page "/donation"
+@* @attribute [Authorize(Roles = "Admin, Finance")] *@
 @using BlazorServer.Data
 @using DonationLibrary.Models
 @inject DonationService donationService
@@ -37,9 +37,21 @@ else
     <tbody>
         @foreach (var item in donations)
             {
-                getContact(item.AccountNo);
-                getType(item.TransactionTypeId);
-                getMethod(item.PaymentMethodId);
+                 if (item.AccountNo.HasValue)
+    {
+        getContact(item.AccountNo.Value);
+    }
+
+    if (item.TransactionTypeId.HasValue)
+    {
+        getType(item.TransactionTypeId.Value);
+    }
+
+    if (item.PaymentMethodId.HasValue)
+    {
+        getMethod(item.PaymentMethodId.Value);
+    }
+             
                 <tr>
                     <td>@item.TransId</td>
                     <td>@item.Date</td>

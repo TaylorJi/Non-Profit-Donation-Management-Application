@@ -1,4 +1,6 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
+﻿@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="top-row ps-3 navbar navbar-dark">
     <div class="container-fluid">
         <a class="navbar-brand" href="">BlazorServer</a>
         <button title="Navigation menu" class="navbar-toggler" @onclick="ToggleNavMenu">
@@ -9,40 +11,55 @@
 
 <div class="@NavMenuCssClass nav-scrollable" @onclick="ToggleNavMenu">
     <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="oi oi-home" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="getContactList">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> ContactList
-            </NavLink>
-        </div>
+
+        @if (isUserAdmin)
+        {
             <div class="nav-item px-3">
-            <NavLink class="nav-link" href="getPaymentMethod">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Payment Method
-            </NavLink>
-        </div>
+                <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                    <span class="oi oi-home" aria-hidden="true"></span> Home
+                </NavLink>
+            </div>
             <div class="nav-item px-3">
-            <NavLink class="nav-link" href="getTransactionType">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Transaction Type
-            </NavLink>
-        </div>
+                <NavLink class="nav-link" href="getContactList">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> ContactList
+                </NavLink>
+            </div>
             <div class="nav-item px-3">
-            <NavLink class="nav-link" href="donation">
-                <span class="oi oi-list-rich" aria-hidden="true"></span> Donation
-            </NavLink>
-        </div>
-        <div class="nav-item px-3">
+                <NavLink class="nav-link" href="getPaymentMethod">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Payment Method
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="getTransactionType">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Transaction Type
+                </NavLink>
+            </div>
+            <div class="nav-item px-3">
             <NavLink class="nav-link" href="reportPage">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Yearly Reports
             </NavLink>
         </div>
+
+        }
+
+        @if (isUserAdmin || isUserFinance)
+        {
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="donation">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> Donation
+                </NavLink>
+            </div>
+
+        }
+
     </nav>
 </div>
 
 @code {
+    private bool isUserAdmin = false;
+    private bool isUserFinance = false;
+
+
     private bool collapseNavMenu = true;
 
     private string? NavMenuCssClass => collapseNavMenu ? "collapse" : null;
@@ -50,5 +67,21 @@
     private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+        var user = authState.User;
+        Console.WriteLine(user.Identity.Name);
+        foreach (var claim in user.Claims)
+        {
+            Console.WriteLine($"Claim Type: {claim.Type}, Claim Value: {claim.Value}");
+        }
+
+        isUserAdmin = user.IsInRole("Admin");
+        isUserFinance = user.IsInRole("Finance");
+
+
+        await base.OnInitializedAsync();
     }
 }

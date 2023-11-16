@@ -27,10 +27,12 @@ namespace BlazorServer.Data
             List<IdentityRole> roles = new List<IdentityRole>() {
                 adminRole,
                 memberRole,
-                financeRole // EJ
+                financeRole 
             };
 
             builder.Entity<IdentityRole>().HasData(roles);
+
+            
 
             
             // Seed Users
@@ -52,7 +54,7 @@ namespace BlazorServer.Data
             memberUser.NormalizedEmail = memberUser.Email.ToUpper();
             memberUser.PasswordHash = passwordHasher.HashPassword(memberUser, pwd);
 
-            // EJ
+        
             var financeUser = new IdentityUser {
                 UserName = "f@f.f",
                 Email = "f@f.f",
@@ -65,10 +67,31 @@ namespace BlazorServer.Data
             List<IdentityUser> users = new List<IdentityUser>() {
                 adminUser,
                 memberUser,
-                financeUser // EJ
+                financeUser
             };
 
             builder.Entity<IdentityUser>().HasData(users);
+
+             // Seed UserRoles
+            List<IdentityUserRole<string>> userRoles = new List<IdentityUserRole<string>>();
+
+            userRoles.Add(new IdentityUserRole<string> {
+                UserId = users[0].Id,
+                RoleId = roles.First(q => q.Name == "Admin").Id
+            });
+
+            userRoles.Add(new IdentityUserRole<string> {
+                UserId = users[1].Id,
+                RoleId = roles.First(q => q.Name == "Member").Id
+            });
+
+            // EJ
+            userRoles.Add(new IdentityUserRole<string> {
+                UserId = users[2].Id,
+                RoleId = roles.First(q => q.Name == "Finance").Id
+            });
+
+            builder.Entity<IdentityUserRole<string>>().HasData(userRoles);
         }
     }
 }

@@ -11,9 +11,12 @@ namespace BlazorServer.Data
     public class ContactListService
     {
         private ApplicationDbContext _context;
-    public ContactListService(ApplicationDbContext context)
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public ContactListService(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
     {
         _context = context;
+        _httpContextAccessor = httpContextAccessor;
     }
 
     public async Task<List<ContactList>> GetContactListsAsync()
@@ -28,7 +31,12 @@ namespace BlazorServer.Data
 
     public async Task<ContactList?> InsertContactAsync(ContactList contactList)
     {
+        var userName = _httpContextAccessor.HttpContext?.User.Identity.Name ?? "Unknown";
+        contactList.Created = DateTime.Now;
+
+        contactList.CreatedBy = userName;
         _context.ContactLists.Add(contactList);
+  
         await _context!.SaveChangesAsync();
 
         return contactList;
@@ -38,6 +46,7 @@ namespace BlazorServer.Data
     public async Task<ContactList> UpdateContactAsync(int id, ContactList s)
     {
         var contactList = await _context.ContactLists!.FindAsync(id);
+        var userName = _httpContextAccessor.HttpContext?.User.Identity.Name ?? "Unknown";
 
         if (contactList == null)
             return null!;
@@ -49,6 +58,8 @@ namespace BlazorServer.Data
         contactList.City = s.City;
         contactList.PostalCode = s.PostalCode;
         contactList.Country = s.Country;
+        contactList.Modified = DateTime.Now;
+        contactList.ModifiedBy = userName;
 
         _context.ContactLists.Update(contactList);
         await _context.SaveChangesAsync();

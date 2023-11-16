@@ -1,5 +1,5 @@
-
 @page "/reportPage"
+@* @attribute [Authorize(Roles = "Admin")] *@
 @using BlazorServer.Data
 @using DonationLibrary.Models
 @inject DonationService donationService
@@ -33,14 +33,28 @@ else
     <tbody>
         @foreach (var item in donations)
             {
-                getContact(item.AccountNo);
+                                if (item.AccountNo.HasValue)
+    {
+        getContact(item.AccountNo.Value);
+    }
+
+    if (item.TransactionTypeId.HasValue)
+    {
+        getType(item.TransactionTypeId.Value);
+    }
+
+    if (item.PaymentMethodId.HasValue)
+    {
+        getMethod(item.PaymentMethodId.Value);
+    }
+                @* getContact(item.AccountNo);
                 getType(item.TransactionTypeId);
-                getMethod(item.PaymentMethodId);
+                getMethod(item.PaymentMethodId); *@
                 <tr>
                     <td>@item.Date</td>
                     <td>@contact.FirstName @contact.LastName</td>
                     <td>@transactionType.Name</td>
-                    <td>$@item.Amount</td>
+                    <td>@item.Amount</td>
                     <td>@paymentMethod.Name</td>
                 </tr>
                 addTotal(item.Amount);
@@ -90,7 +104,7 @@ else
         totalDonations = 0;
         foreach (var item in donationsUnfiltered)
         {
-            if (item.Date.Year == year)
+            if (item.Date.HasValue && item.Date.Value.Year == year)
             {
                 donations.Add(item);
             }

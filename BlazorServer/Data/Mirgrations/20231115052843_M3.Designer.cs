@@ -3,16 +3,19 @@ using System;
 using BlazorServer.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace BlazorServer.Data.Migrations
+namespace BlazorServer.Data.Mirgrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231115052843_M3")]
+    partial class M3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
@@ -157,7 +160,7 @@ namespace BlazorServer.Data.Migrations
                             TransId = 1,
                             AccountNo = 24,
                             Amount = 500f,
-                            Date = new DateTime(2023, 11, 14, 21, 46, 57, 278, DateTimeKind.Local).AddTicks(1030),
+                            Date = new DateTime(2023, 11, 14, 21, 28, 43, 740, DateTimeKind.Local).AddTicks(4670),
                             Notes = "Donated monthly",
                             PaymentMethodId = 1,
                             TransactionTypeId = 1
@@ -167,7 +170,7 @@ namespace BlazorServer.Data.Migrations
                             TransId = 2,
                             AccountNo = 17,
                             Amount = 1000f,
-                            Date = new DateTime(2023, 11, 14, 21, 46, 57, 278, DateTimeKind.Local).AddTicks(1070),
+                            Date = new DateTime(2023, 11, 14, 21, 28, 43, 740, DateTimeKind.Local).AddTicks(4720),
                             Notes = "Donated for homeless people",
                             PaymentMethodId = 2,
                             TransactionTypeId = 2
@@ -177,7 +180,7 @@ namespace BlazorServer.Data.Migrations
                             TransId = 3,
                             AccountNo = 12,
                             Amount = 750f,
-                            Date = new DateTime(2023, 11, 14, 21, 46, 57, 278, DateTimeKind.Local).AddTicks(1070),
+                            Date = new DateTime(2023, 11, 14, 21, 28, 43, 740, DateTimeKind.Local).AddTicks(4720),
                             Notes = "Donators want a new gym",
                             PaymentMethodId = 2,
                             TransactionTypeId = 3
@@ -312,19 +315,19 @@ namespace BlazorServer.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f625cafe-668c-4212-ab0d-40becf5747ae",
+                            Id = "63a59351-ce82-45c1-bfaa-9e76ad5826a3",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "5daef0ea-77e5-4d74-bb80-d8a5bb8febe2",
+                            Id = "61216578-3940-4f15-8e07-399cdb09a0c3",
                             Name = "Member",
                             NormalizedName = "MEMBER"
                         },
                         new
                         {
-                            Id = "558edccf-fcaa-41e2-b597-f768102108b9",
+                            Id = "b5e37756-0a93-49f8-81cf-b6bdec395fd1",
                             Name = "Finance",
                             NormalizedName = "FINANCE"
                         });
@@ -419,49 +422,49 @@ namespace BlazorServer.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ba86e740-9ba9-4d73-8a60-b7ad49581a82",
+                            Id = "8ddbfb33-8d89-43c3-91f1-045996865974",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4936f7c0-af36-4c02-90d9-9da066f6c0f7",
+                            ConcurrencyStamp = "8e92982c-7eaf-4002-a8f4-048183e425b5",
                             Email = "a@a.a",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "A@A.A",
                             NormalizedUserName = "A@A.A",
-                            PasswordHash = "AQAAAAIAAYagAAAAEMTyAF1wYY0+N2ed0O9fHW9K3BLDRBo8BZJgZImvf7chHwb+8lubxoZzULVFijua2Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEAhfyxQpmFpsdL8xX5Z4MVuhd7cX7ZzbXxpYrb4KEbDxqMpYhbSupOrpi+AbUXBOpw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2ef8e241-5d3b-4155-906a-42c8fa2f57a6",
+                            SecurityStamp = "775197f3-5f51-4200-8494-ac9a4aaba20f",
                             TwoFactorEnabled = false,
                             UserName = "a@a.a"
                         },
                         new
                         {
-                            Id = "9c1aec01-01f1-4d47-88cc-cad262d2736c",
+                            Id = "332a9f6f-b64b-4030-81ef-748a79700a67",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5101b452-26c6-4645-864d-0050f7c1949a",
+                            ConcurrencyStamp = "eeaf874e-b95b-4e2a-857c-9d95ba9ce076",
                             Email = "m@m.m",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "M@M.M",
                             NormalizedUserName = "M@M.M",
-                            PasswordHash = "AQAAAAIAAYagAAAAEE2jQeGBKfbOdfUi3IikUC/4fyPUPc7hIpixGHYZdoYppGx8EzihdwUyKr2Ie/s7lw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAECSG4CBYl34uaqlVuvg1ptBFwPVMADTYj/7dJK1NRlIfbmhrDtbhU4FkhY1m6rwvHw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "7ff91ca1-2e42-4be7-8a46-8b9d921eddda",
+                            SecurityStamp = "5f7a320b-fe35-4375-a0b4-1f17a396611b",
                             TwoFactorEnabled = false,
                             UserName = "m@m.m"
                         },
                         new
                         {
-                            Id = "6a5f2907-9d05-4f17-b16b-2cefbdda5b11",
+                            Id = "dc9fc81c-0a0a-42ef-a29a-aba268c3fe42",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4ac39231-8639-4937-b0b0-7bcd05a03a07",
+                            ConcurrencyStamp = "15175e6e-ffb5-4e27-9933-41971fba229e",
                             Email = "f@f.f",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "F@F.F",
                             NormalizedUserName = "F@F.F",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKgrHtbcbzxlIfeRyevNU0nytmjGqYXtdIRqS9SWCcRJW2IGY8q47k5i6vApw9u4KA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGnxasksFgAz8GjjXkk//AITcKqZJf1et2OnUFRy5xYQp8klM80gnPvi53OXw4VDdw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6fdeeba8-4ae6-41e4-97de-909d647412ec",
+                            SecurityStamp = "06e08d7a-696f-40a0-aad3-a64c0da4c40e",
                             TwoFactorEnabled = false,
                             UserName = "f@f.f"
                         });
@@ -527,23 +530,6 @@ namespace BlazorServer.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "ba86e740-9ba9-4d73-8a60-b7ad49581a82",
-                            RoleId = "f625cafe-668c-4212-ab0d-40becf5747ae"
-                        },
-                        new
-                        {
-                            UserId = "9c1aec01-01f1-4d47-88cc-cad262d2736c",
-                            RoleId = "5daef0ea-77e5-4d74-bb80-d8a5bb8febe2"
-                        },
-                        new
-                        {
-                            UserId = "6a5f2907-9d05-4f17-b16b-2cefbdda5b11",
-                            RoleId = "558edccf-fcaa-41e2-b597-f768102108b9"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

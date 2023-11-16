@@ -10,72 +10,81 @@ namespace BlazorServer.Data
     public class DonationService
     {
         private ApplicationDbContext _context;
-    public DonationService(ApplicationDbContext context)
-    {
-        _context = context;
-    }
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
-    public async Task<List<Donation>> GetDonationsAsync()
-    {
-         return await  _context.Donations.ToListAsync();
-    }
+        public DonationService(ApplicationDbContext context, IHttpContextAccessor httpContextAccessor)
+        {
+            _context = context;
+            _httpContextAccessor = httpContextAccessor;
+        }
 
-    public async Task<Donation?> GetDonationByIdAsync(int id)
-    {
-        return await _context.Donations.FindAsync(id) ?? null;
-    }
+        public async Task<List<Donation>> GetDonationsAsync()
+        {
+            return await _context.Donations.ToListAsync();
+        }
 
-    public async Task<Donation?> InsertDonationAsync(Donation donation)
-    {
-        _context.Donations.Add(donation);
-        await _context!.SaveChangesAsync();
+        public async Task<Donation?> GetDonationByIdAsync(int id)
+        {
+            return await _context.Donations.FindAsync(id) ?? null;
+        }
 
-        return donation;
-    }
-   
-    public async Task<List<Donation>> GetDonationsByContactListIdAsync(int id)
-    {
-        return await _context.Donations.Where(d => d.AccountNo! == id).ToListAsync();
-    }
+        public async Task<Donation?> InsertDonationAsync(Donation donation)
+        {
+            var userName = _httpContextAccessor.HttpContext?.User.Identity.Name ?? "Unknown";
+            donation.Created = DateTime.Now;
+            donation.CreatedBy = userName;
+            _context.Donations.Add(donation);
+            await _context!.SaveChangesAsync();
 
-    public async Task<Donation> UpdateDonationAsync(int id, Donation d)
-    {
-        var donation = await _context.Donations!.FindAsync(id);
+            return donation;
+        }
 
-        if (donation == null)
-            return null!;
+        public async Task<List<Donation>> GetDonationsByContactListIdAsync(int id)
+        {
+            return await _context.Donations.Where(d => d.AccountNo! == id).ToListAsync();
+        }
 
-        donation.ContactList = d.ContactList;
-        donation.PaymentMethod = d.PaymentMethod;
-        donation.TransactionType = d.TransactionType;
-        donation.Amount = d.Amount;
-        donation.Date = d.Date;
-        
-        
+        public async Task<Donation> UpdateDonationAsync(int id, Donation d)
+        {
+            var donation = await _context.Donations!.FindAsync(id);
 
-        _context.Donations.Update(donation);
-        await _context.SaveChangesAsync();
+            if (donation == null)
+                return null!;
 
-        return donation!;
-    }
+            var userName = _httpContextAccessor.HttpContext?.User.Identity.Name ?? "Unknown";
 
-    public async Task<Donation> DeleteDonationAsync(int id)
-    {
-        var donation = await _context.Donations!.FindAsync(id);
 
-        if (donation == null)
-            return null!;
+            donation.ContactList = d.ContactList;
+            donation.PaymentMethod = d.PaymentMethod;
+            donation.TransactionType = d.TransactionType;
+            donation.Amount = d.Amount;
+            donation.Date = d.Date;
+            donation.Modified = DateTime.Now;
+            donation.ModifiedBy = userName;
 
-        _context.Donations.Remove(donation);
-        await _context.SaveChangesAsync();
+            _context.Donations.Update(donation);
+            await _context.SaveChangesAsync();
 
-        return donation!;
-    }
+            return donation!;
+        }
 
-    private bool DonationExists(int id)
-    {
-        return _context.Donations!.Any(e => e.TransactionTypeId == id);
-    }
+        public async Task<Donation> DeleteDonationAsync(int id)
+        {
+            var donation = await _context.Donations!.FindAsync(id);
+
+            if (donation == null)
+                return null!;
+
+            _context.Donations.Remove(donation);
+            await _context.SaveChangesAsync();
+
+            return donation!;
+        }
+
+        private bool DonationExists(int id)
+        {
+            return _context.Donations!.Any(e => e.TransactionTypeId == id);
+        }
 
     }
 }
