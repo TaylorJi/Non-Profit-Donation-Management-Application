@@ -28,6 +28,9 @@
         <InputSelect class="form-control" id="Contact" @bind-Value="newDonation.AccountNo">
             @foreach (var contact in contacts)
             {
+                if (newDonation.AccountNo == null) {
+                    newDonation.AccountNo = contact.AccountNo;
+                }
                 <option value="@contact.AccountNo">@contact.FirstName @contact.LastName</option>
             }
         </InputSelect>
@@ -37,6 +40,9 @@
         <InputSelect class="form-control" id="Method" @bind-Value="newDonation.PaymentMethodId">
             @foreach (var method in paymentMethods)
             {
+                if (newDonation.PaymentMethodId == null) {
+                    newDonation.PaymentMethodId = method.PaymentMethodId;
+                }
                 <option value="@method.PaymentMethodId">@method.Name</option>
             }
         </InputSelect>
@@ -46,6 +52,9 @@
         <InputSelect class="form-control" id="Type" @bind-Value="newDonation.TransactionTypeId">
             @foreach (var type in transactionTypes)
             {
+                if (newDonation.TransactionTypeId == null) {
+                    newDonation.TransactionTypeId = type.TransactionTypeId;
+                }
                 <option value="@type.TransactionTypeId">@type.Name</option>
             }
         </InputSelect>

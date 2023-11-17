@@ -1,0 +1,37 @@
+@page "/getPaymentMethod/details/{id}"
+@attribute [Authorize(Roles = "Admin")]
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject PaymentMethodService paymentMethodService
+@inject NavigationManager NavManager
+
+<PageTitle>Details of Payment Method</PageTitle>
+
+<fieldset>
+    <legend>Payment Method Information</legend>
+    <p>Id: @Id</p>
+    <p>Name: @paymentMethod.Name</p>
+    <p>Created: @paymentMethod.Created</p>
+    <p>Modified: @paymentMethod.Modified</p>
+    <p>Created By: @paymentMethod.CreatedBy</p>
+    <p>Modified By: @paymentMethod.ModifiedBy</p>
+</fieldset>
+<div class="form-group">
+    <button class="btn btn-primary" @onclick="BackToPaymentMethodList">Back to Payment Method List</button>
+</div>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    private PaymentMethod? paymentMethod = new PaymentMethod();
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        paymentMethod = await paymentMethodService.GetPaymentMethodByIdAsync(intId);
+    }
+
+    private void BackToPaymentMethodList()
+    {
+        NavManager.NavigateTo("/getPaymentMethod");
+    }
+}

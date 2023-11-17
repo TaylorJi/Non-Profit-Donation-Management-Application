@@ -1,0 +1,38 @@
+@page "/getTransactionType/details/{id}"
+@attribute [Authorize(Roles = "Admin")]
+@using BlazorServer.Data
+@using DonationLibrary.Models
+@inject TransactionTypeService transactionTypeService
+@inject NavigationManager NavManager
+
+<PageTitle>Details of Transaction Type</PageTitle>
+
+<fieldset>
+    <legend>Transaction Type Information</legend>
+    <p>Id: @Id</p>
+    <p>Name: @transactionType.Name</p>
+    <p>Description: @transactionType.Description</p>
+    <p>Created: @transactionType.Created</p>
+    <p>Modified: @transactionType.Modified</p>
+    <p>Created By: @transactionType.CreatedBy</p>
+    <p>Modified By: @transactionType.ModifiedBy</p>
+</fieldset>
+<div class="form-group">
+    <button class="btn btn-primary" @onclick="BackToTransactionTypeList">Back to Transaction Type List</button>
+</div>
+
+@code {
+    [Parameter]
+    public string? Id { get; set; }
+    private TransactionType? transactionType = new TransactionType();
+    protected override async Task OnInitializedAsync()
+    {
+        int intId = Convert.ToInt32(Id);
+        transactionType = await transactionTypeService.GetTransactionByIdAsync(intId);
+    }
+
+    private void BackToTransactionTypeList()
+    {
+        NavManager.NavigateTo("/getTransactionType");
+    }
+}

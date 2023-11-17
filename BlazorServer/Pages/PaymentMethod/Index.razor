@@ -24,6 +24,7 @@ else
             <th>Name</th>
             <th></th>
             <th></th>
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -34,6 +35,7 @@ else
                     <td>@item.Name</td>
                     <td><a class="btn btn-success btn-sm" href="/getPaymentMethod/updel/@item.PaymentMethodId/edit">edit</a></td>
                     <td><a class="btn btn-danger btn-sm" href="/getPaymentMethod/updel/@item.PaymentMethodId/del">del</a></td>
+                    <td><a class="btn btn-primary btn-sm" href="/getPaymentMethod/details/@item.PaymentMethodId">details</a></td>
                 </tr>
             }
         </tbody>
