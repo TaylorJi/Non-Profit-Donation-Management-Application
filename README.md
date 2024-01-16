@@ -31,3 +31,11 @@ Ensure you have the following installed:
 ### Installation
 
 1. Clone the repository:
+2. Navigate to the project directory:
+3. Run the application:
+
+### Usage
+
+- Access the application through your web browser at `http://localhost:5000`.
+- Log in with the provided credentials to explore different functionalities based on your role.
+
