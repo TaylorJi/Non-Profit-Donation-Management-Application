@@ -25,17 +25,20 @@ This application is tailored for non-profit organizations to enhance their donat
 ### Prerequisites
 
 Ensure you have the following installed:
-- [.NET 5.0 SDK](https://dotnet.microsoft.com/download/dotnet/5.0)
+- [.NET 7.0 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/7.0)
 - [SQLite](https://www.sqlite.org/download.html)
 
 ### Installation
 
 1. Clone the repository:
 2. Navigate to the project directory:
-3. Run the application:
+3. Type "dotnet run"
 
 ### Usage
 
 - Access the application through your web browser at `http://localhost:5000`.
 - Log in with the provided credentials to explore different functionalities based on your role.
+- Admin account credentials:
+  id: a@a.a
+  pw: P@$$w0rd
 
